@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Package2 } from "lucide-react";
+import { CircleUser, Menu, Globe } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
 
@@ -24,6 +24,7 @@ const Layout = () => {
       <main className="flex-grow p-4 overflow-auto">
         <Outlet />
       </main>
+      <Footer />
     </div>
   );
 };
@@ -34,8 +35,8 @@ const DesktopNav = () => (
       to="/"
       className="flex items-center gap-2 text-lg font-semibold md:text-base"
     >
-      <Package2 className="h-6 w-6" />
-      <span className="sr-only">Acme Inc</span>
+      <Globe className="h-6 w-6" />
+      <span className="sr-only">Travel Booking</span>
     </NavItem>
     {navItems.map((item) => (
       <NavItem key={item.to} to={item.to}>
@@ -59,8 +60,8 @@ const MobileNav = () => (
           to="/"
           className="flex items-center gap-2 text-lg font-semibold"
         >
-          <Package2 className="h-6 w-6" />
-          <span className="sr-only">Acme Inc</span>
+          <Globe className="h-6 w-6" />
+          <span className="sr-only">Travel Booking</span>
         </NavItem>
         {navItems.map((item) => (
           <NavItem key={item.to} to={item.to}>
@@ -106,6 +107,30 @@ const NavItem = ({ to, children, className }) => (
   >
     {children}
   </NavLink>
+);
+
+const Footer = () => (
+  <footer className="border-t bg-background p-4">
+    <div className="flex justify-between">
+      <div className="flex gap-4">
+        <NavLink to="/about-us">About Us</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
+        <NavLink to="/terms">Terms & Conditions</NavLink>
+        <NavLink to="/privacy">Privacy Policy</NavLink>
+      </div>
+      <div className="flex gap-4">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <i className="fab fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
 );
 
 export default Layout;
